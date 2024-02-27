@@ -17,7 +17,7 @@ XGBoost incorporates additional regularization terms in its objective function t
    
    Mathematically, the tree complexity regularization term (Ω(f)) can be written as:
    
-   $Ω(f) = γ * T + ½ * λ * Σ(w²)$
+   $$Ω(f) = γ * T + ½ * λ * Σ(w²)$$
 
    Where:
    - T is the number of leaves in the tree.
@@ -29,13 +29,13 @@ XGBoost incorporates additional regularization terms in its objective function t
    
    Mathematically, the regularization term on the number of trees can be written as:
    
-   Ω(K) = η * K
+   $$Ω(K) = η * K$$
 
    Where:
    - η is the regularization parameter controlling the impact of the number of trees.
 
 The overall objective function in XGBoost is the sum of the training loss and the regularization term:
 
-Objective = L(training) + Ω(f) + Ω(K)
+$$Objective = L(training) + Ω(f) + Ω(K)$$
 
 By optimizing this objective function during training, XGBoost finds the optimal ensemble of trees that balances between minimizing the training loss and controlling the complexity of the model, thus avoiding overfitting. Adjusting the regularization parameters (γ, λ, and η) allows fine-tuning the model's complexity to achieve better generalization performance on unseen data.
