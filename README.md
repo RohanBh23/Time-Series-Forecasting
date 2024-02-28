@@ -62,20 +62,20 @@ The problem addressed in this code is time-series forecasting of restaurant orde
 
 1. **XGBoost Regression Approach**:
    - The XGBoost algorithm minimizes the following objective function for regression tasks:
-     \[ \text{Objective} = \sum_{i=1}^{n} \text{loss}(y_i, \hat{y}_i) + \sum_{k=1}^{K} \Omega(f_k) \]
+     $\[ \text{Objective} = \sum_{i=1}^{n} \text{loss}(y_i, \hat{y}_i) + \sum_{k=1}^{K} \Omega(f_k) \]$
      where:
-     - \( \text{loss}(y_i, \hat{y}_i) \) represents the loss function, typically the mean squared error for regression problems.
-     - \( \Omega(f_k) \) is the regularization term that penalizes the complexity of the model to prevent overfitting.
-     - \( f_k \) represents the \( k \)-th tree in the ensemble model.
+     - $\( \text{loss}(y_i, \hat{y}_i) \)$ represents the loss function, typically the mean squared error for regression problems.
+     - $\( \Omega(f_k) \)$ is the regularization term that penalizes the complexity of the model to prevent overfitting.
+     - $\( f_k \)$ represents the $\( k \)-th$ tree in the ensemble model.
    
 2. **Prophet Approach**:
    - Prophet models the time series using a generalized additive model (GAM) framework. The forecast equation is:
-     \[ y(t) = g(t) + s(t) + h(t) + \varepsilon_t \]
+     $\[ y(t) = g(t) + s(t) + h(t) + \varepsilon_t \]$
      where:
-     - \( g(t) \) represents the trend component, which captures the long-term growth or decline in the time series.
-     - \( s(t) \) represents the seasonal component, which captures periodic fluctuations in the data.
-     - \( h(t) \) represents the holiday effects, accounting for the impact of holidays or special events on the time series.
-     - \( \varepsilon_t \) is the error term, representing random noise or unmodeled variability.
+     - $\( g(t) \)$ represents the trend component, which captures the long-term growth or decline in the time series.
+     - $\( s(t) \)$ represents the seasonal component, which captures periodic fluctuations in the data.
+     - $\( h(t) \)$ represents the holiday effects, accounting for the impact of holidays or special events on the time series.
+     - $\( \varepsilon_t \)$ is the error term, representing random noise or unmodeled variability.
 
 ### Code Explanation:
 
