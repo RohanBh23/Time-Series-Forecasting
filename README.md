@@ -66,15 +66,15 @@ The problem addressed in this code is time-series forecasting of restaurant orde
       $\[ \text{Objective} = \sum_{i=1}^{n} \text{loss}(y_i, \hat{y}_i) + \sum_{k=1}^{K} \Omega(f_k) \]$
       
       Where:
-      - \( n \) is the number of training samples.
-      - \( y_i \) is the true label for the \( i \)-th sample.
-      - \( \hat{y}_i \) is the predicted value for the \( i \)-th sample.
-      - \( K \) is the number of trees in the ensemble model.
-      - \( \text{loss}(y_i, \hat{y}_i) \) represents the loss function, typically the mean squared error for regression problems, defined as:
-        \[ \text{loss}(y_i, \hat{y}_i) = (y_i - \hat{y}_i)^2 \]
-      - \( \Omega(f_k) \) is the regularization term that penalizes the complexity of the model to prevent overfitting, defined as:
-        \[ \Omega(f_k) = \gamma T + \frac{1}{2} \lambda \sum_{j=1}^{T} w_j^2 \]
-        where \( T \) is the number of leaves in the tree, \( w_j \) are the leaf weights, and \( \gamma \) and \( \lambda \) are regularization parameters.
+      - $\( n \)$ is the number of training samples.
+      - $\( y_i \)$ is the true label for the \( i \)-th sample.
+      - $\( \hat{y}_i \)$ is the predicted value for the \( i \)-th sample.
+      - $\( K \)$ is the number of trees in the ensemble model.
+      - $\( \text{loss}(y_i, \hat{y}_i) \)$ represents the loss function, typically the mean squared error for regression problems, defined as:
+        $\[ \text{loss}(y_i, \hat{y}_i) = (y_i - \hat{y}_i)^2 \]$
+      - $\( \Omega(f_k) \)$ is the regularization term that penalizes the complexity of the model to prevent overfitting, defined as:
+        $\[ \Omega(f_k) = \gamma T + \frac{1}{2} \lambda \sum_{j=1}^{T} w_j^2 \]$
+        where $\( T \)$ is the number of leaves in the tree, $\( w_j \)$ are the leaf weights, and $\( \gamma \)$ and $\( \lambda \)$ are regularization parameters.
       
       The objective is to minimize this function by adjusting the parameters of the model (tree structures and leaf weights) during training to improve the predictive 
       performance on the training data.
