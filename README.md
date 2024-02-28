@@ -39,3 +39,64 @@ The overall objective function in XGBoost is the sum of the training loss and th
 $$Objective = L(training) + Ω(f) + Ω(K)$$
 
 By optimizing this objective function during training, XGBoost finds the optimal ensemble of trees that balances between minimizing the training loss and controlling the complexity of the model, thus avoiding overfitting. Adjusting the regularization parameters (γ, λ, and η) allows fine-tuning the model's complexity to achieve better generalization performance on unseen data.
+
+
+### Data Description:
+The dataset used in this code represents restaurant order data. Each row contains information about a particular order, including the order number, timestamp, item ordered, quantity, price, and total products in the cart. Additionally, the data includes a 'label' column, which likely represents a target variable, possibly the number of orders.
+
+### Problem Statement:
+The problem addressed in this code is time-series forecasting of restaurant order volumes. The goal is to predict the future number of orders based on historical data. This prediction can help restaurant owners and managers make informed decisions about inventory management, staffing, and other operational aspects.
+
+### Approach Overview:
+1. **XGBoost Regression Approach**:
+   - This approach utilizes the XGBoost library, which is a popular gradient boosting framework. The problem is formulated as a regression task where historical order counts are used to predict future order volumes.
+   - Features such as 'order_count_7_day' and 'order_count_30_day' are engineered to capture the recent and long-term order trends.
+   - XGBoost regressor is trained on the engineered features to learn the relationship between past order volumes and future predictions.
+
+2. **Prophet Approach**:
+   - Prophet is a forecasting tool developed by Facebook that is particularly well-suited for time-series data with strong seasonal patterns.
+   - This approach involves training Prophet models iteratively, with each iteration predicting the order volume for the next week.
+   - The predictions are then aggregated and visualized to understand how well the model captures the underlying order trends.
+
+### Methods:
+
+1. **XGBoost Regression Approach**:
+   - The XGBoost algorithm minimizes the following objective function for regression tasks:
+     \[ \text{Objective} = \sum_{i=1}^{n} \text{loss}(y_i, \hat{y}_i) + \sum_{k=1}^{K} \Omega(f_k) \]
+     where:
+     - \( \text{loss}(y_i, \hat{y}_i) \) represents the loss function, typically the mean squared error for regression problems.
+     - \( \Omega(f_k) \) is the regularization term that penalizes the complexity of the model to prevent overfitting.
+     - \( f_k \) represents the \( k \)-th tree in the ensemble model.
+   
+2. **Prophet Approach**:
+   - Prophet models the time series using a generalized additive model (GAM) framework. The forecast equation is:
+     \[ y(t) = g(t) + s(t) + h(t) + \varepsilon_t \]
+     where:
+     - \( g(t) \) represents the trend component, which captures the long-term growth or decline in the time series.
+     - \( s(t) \) represents the seasonal component, which captures periodic fluctuations in the data.
+     - \( h(t) \) represents the holiday effects, accounting for the impact of holidays or special events on the time series.
+     - \( \varepsilon_t \) is the error term, representing random noise or unmodeled variability.
+
+### Code Explanation:
+
+1. **XGBoost Regression Approach**:
+   - The code first loads and preprocesses the dataset, extracting relevant features like 'order_count_7_day' and 'order_count_30_day'.
+   - It splits the data into training and testing sets.
+   - XGBoost regressor is initialized and trained on the training data using the `fit()` method.
+   - The trained model is then used to make predictions on the testing data using the `predict()` method.
+   - Finally, the predictions are visualized alongside the actual order counts using seaborn.
+
+2. **Prophet Approach**:
+   - The code prepares the data for Prophet by renaming columns and converting timestamps.
+   - It iterates over each point in time, fitting a Prophet model and making predictions for the next week.
+   - The predictions are aggregated, and the process continues until the end of the dataset.
+   - The predictions are then visualized alongside the actual order counts using seaborn.
+
+By comparing the performance of both approaches, stakeholders can gain insights into the underlying order trends and make informed decisions about resource allocation and operational planning.
+
+### Libraries Used:
+- **pandas**: For data manipulation and preprocessing.
+- **seaborn** and **matplotlib**: For data visualization.
+- **scikit-learn**: For splitting the data into training and testing sets.
+- **XGBoost**: For implementing the XGBoost regression approach.
+- **Prophet**: For implementing the time-series forecasting approach.
