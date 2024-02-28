@@ -63,7 +63,7 @@ The problem addressed in this code is time-series forecasting of restaurant orde
 1. **XGBoost Regression Approach**:
    - The XGBoost algorithm minimizes the following objective function for regression tasks:
 
-      $\[ \text{Objective} = \sum_{i=1}^{n} \text{loss}(y_i, \hat{y}_i) + \sum_{k=1}^{K} \Omega(f_k) \]$
+      $\[ \text{Objective} = \Sigma_{i=1}^{n} \text{loss}(y_i, \hat{y}_i) + \Sigma_{k=1}^{K} \Omega(f_k) \]$
       
       Where:
       - $\( n \)$ is the number of training samples.
