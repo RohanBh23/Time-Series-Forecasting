@@ -73,7 +73,7 @@ The problem addressed in this code is time-series forecasting of restaurant orde
       - $\( \text{loss}(y_i, \hat{y}_i) \)$ represents the loss function, typically the mean squared error for regression problems, defined as:
         $\[ \text{loss}(y_i, \hat{y}_i) = (y_i - \hat{y}_i)^2 \]$
       - $\( \Omega(f_k) \)$ is the regularization term that penalizes the complexity of the model to prevent overfitting, defined as:
-        $\[ \Omega(f_k) = \gamma T + \frac{1}{2} \lambda \sum_{j=1}^{T} w_j^2 \]$
+        $\[ \Omega(f_k) = \gamma T + \frac{1}{2} \lambda \Sigma_{j=1}^{T} w_j^2 \]$
         where $\( T \)$ is the number of leaves in the tree, $\( w_j \)$ are the leaf weights, and $\( \gamma \)$ and $\( \lambda \)$ are regularization parameters.
       
       The objective is to minimize this function by adjusting the parameters of the model (tree structures and leaf weights) during training to improve the predictive 
