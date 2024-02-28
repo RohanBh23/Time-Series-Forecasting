@@ -63,12 +63,21 @@ The problem addressed in this code is time-series forecasting of restaurant orde
 1. **XGBoost Regression Approach**:
    - The XGBoost algorithm minimizes the following objective function for regression tasks:
 
-     $$\[\text{Objective} = \sum_{i=1}^{n} \text{loss}(y_i, \hat{y}_i) + \sum_{k=1}^{K} \Omega(f_k) \]$$
-     
-     where:
-     - $\( \text{loss}(y_i, \hat{y}_i) \)$ represents the loss function, typically the mean squared error for regression problems.
-     - $\( \Omega(f_k) \)$ is the regularization term that penalizes the complexity of the model to prevent overfitting.
-     - $\( f_k \)$ represents the $\( k \)-th$ tree in the ensemble model.
+      $\[ \text{Objective} = \sum_{i=1}^{n} \text{loss}(y_i, \hat{y}_i) + \sum_{k=1}^{K} \Omega(f_k) \]$
+      
+      Where:
+      - \( n \) is the number of training samples.
+      - \( y_i \) is the true label for the \( i \)-th sample.
+      - \( \hat{y}_i \) is the predicted value for the \( i \)-th sample.
+      - \( K \) is the number of trees in the ensemble model.
+      - \( \text{loss}(y_i, \hat{y}_i) \) represents the loss function, typically the mean squared error for regression problems, defined as:
+        \[ \text{loss}(y_i, \hat{y}_i) = (y_i - \hat{y}_i)^2 \]
+      - \( \Omega(f_k) \) is the regularization term that penalizes the complexity of the model to prevent overfitting, defined as:
+        \[ \Omega(f_k) = \gamma T + \frac{1}{2} \lambda \sum_{j=1}^{T} w_j^2 \]
+        where \( T \) is the number of leaves in the tree, \( w_j \) are the leaf weights, and \( \gamma \) and \( \lambda \) are regularization parameters.
+      
+      The objective is to minimize this function by adjusting the parameters of the model (tree structures and leaf weights) during training to improve the predictive 
+      performance on the training data.
    
 2. **Prophet Approach**:
    - Prophet models the time series using a generalized additive model (GAM) framework. The forecast equation is:
@@ -97,8 +106,8 @@ The problem addressed in this code is time-series forecasting of restaurant orde
 By comparing the performance of both approaches, stakeholders can gain insights into the underlying order trends and make informed decisions about resource allocation and operational planning.
 
 ### Libraries Used:
-- **pandas**: For data manipulation and preprocessing.
-- **seaborn** and **matplotlib**: For data visualization.
-- **scikit-learn**: For splitting the data into training and testing sets.
-- **XGBoost**: For implementing the XGBoost regression approach.
-- **Prophet**: For implementing the time-series forecasting approach.
+- `pandas`: For data manipulation and preprocessing.
+- `seaborn` and `matplotlib`: For data visualization.
+- `scikit-learn`: For splitting the data into training and testing sets.
+- `XGBoost`: For implementing the XGBoost regression approach.
+- `Prophet`: For implementing the time-series forecasting approach.
